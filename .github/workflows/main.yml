@@ -16,13 +16,15 @@ jobs:
 
       - name: Install dependencies
         run: npm install
+        working-directory: ReactBasic-main/src
 
       - name: Build the application
         run: npm run build
+        working-directory: ReactBasic-main/src
 
       - name: Deploy to GitHub Pages
         if: success()
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./build
+          publish_dir: ./ReactBasic-main/build
