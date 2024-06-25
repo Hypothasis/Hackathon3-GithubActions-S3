@@ -35,4 +35,4 @@ jobs:
           git config --global user.name "Build"
           git add .
           git commit -m "Add build artifacts"
-          git push -u origin main
+          git push
