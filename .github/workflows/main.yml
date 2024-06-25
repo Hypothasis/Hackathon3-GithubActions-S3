@@ -1,8 +1,12 @@
-name: Build React App 
-run-name: Github Actions Building App
-on: [push]
+name: Build and Deploy React App
+
+on:
+  push:
+    branches:
+      - main
+
 jobs:
-  Explore-Github-Acions:
+  build:
     runs-on: ubuntu-latest
 
     steps:
@@ -16,11 +20,13 @@ jobs:
 
       - name: Install dependencies
         run: npm install
-        working-directory: ReactBasic-main/src
+        working-directory: ./ReactBasic-main
 
       - name: Build the application
+        env:
+          CI: false
         run: npm run build
-        working-directory: ReactBasic-main/src
+        working-directory: ./ReactBasic-main
 
       - name: Deploy to GitHub Pages
         if: success()
