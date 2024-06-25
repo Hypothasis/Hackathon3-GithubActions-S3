@@ -1,4 +1,4 @@
-name: Build and Deploy to S3
+name: Build para S3
 
 on:
   push:
@@ -19,7 +19,9 @@ jobs:
           node-version: '14'
 
       - name: Install dependencies
-        run: npm install
+        run: |
+          npm install
+          npm install eslint@^7.0.0 eslint-plugin-react-hooks@^4.0.0 --save-dev
         working-directory: ./ReactBasic-main
 
       - name: Build project
