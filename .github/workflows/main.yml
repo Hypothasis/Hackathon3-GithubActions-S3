@@ -36,6 +36,10 @@ jobs:
         
       - name: Direrotio
         run: pwd
+
+      - name: Secrets
+        run: echo 'id:${{ secrets.AWS_ACCESS_KEY_ID }}'
+             echo 'password:${{ secrets.AWS_SECRET_ACCESS_KEY }}'
         
       - name: Upload to S3
         env:
