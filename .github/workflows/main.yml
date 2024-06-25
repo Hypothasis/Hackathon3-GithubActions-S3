@@ -15,9 +15,11 @@ jobs:
 
       - name: Install dependencies
         run: npm install
+        working-directory: ./ReactBasic-main
 
       - name: Build project
         run: npm run build
+        working-directory: ./ReactBasic-main
 
       - name: Upload to S3
         env:
