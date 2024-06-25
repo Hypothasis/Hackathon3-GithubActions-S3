@@ -20,7 +20,12 @@ jobs:
 
       - name: Set NODE_OPTIONS
         run: export NODE_OPTIONS=--openssl-legacy-provider
-
+  
+      - name: Install AWS CLI
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y awscli
+      
       - name: Install dependencies
         run: npm install
         working-directory: ./ReactBasic-main
