@@ -16,25 +16,15 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '14'
+          node-version: '16'
 
       - name: Set NODE_OPTIONS
         run: export NODE_OPTIONS=--openssl-legacy-provider
 
       - name: Install dependencies
-        run: |
-          npm install
-          npm install eslint@^7.0.0 eslint-plugin-react-hooks@^4.0.0 --save-dev
+        run: npm install
         working-directory: ./ReactBasic-main
 
       - name: Build project
-        run: |
-          CI=false npm run build
-        working-directory: ./ReactBasic-main
-
-      - name: Upload to S3
-        env:
-          AWS_REGION: 'us-east-1'
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        run: aws s3 sync ./ReactBasic-main/build s3://hackathon3-site-react/ --delete
+        run: CI=false npm run build
+        working-directory: ./ReactBasic-main/
