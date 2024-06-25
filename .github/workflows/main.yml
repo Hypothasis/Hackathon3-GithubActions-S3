@@ -37,5 +37,4 @@ jobs:
           AWS_REGION: 'us-east-1'
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        run: |
-          aws s3 sync ./ReactBasic-main/build s3://hackathon3-site-react/ --delete
+        run: aws s3 sync ./ReactBasic-main/build s3://hackathon3-site-react/ --delete
