@@ -28,11 +28,14 @@ jobs:
       - name: Build project
         run: CI=false npm run build
         working-directory: ./ReactBasic-main
-
-      - name: Commit build artifacts
+      - name: Direrotio
         run: |
-          git config --global user.email "gabriel.oliveira.eng.comput@gmail.com"
-          git config --global user.name "Build"
-          git add .
-          git commit -m "Add build artifacts"
-          git push
+              ls
+              pwd
+        
+      - name: Upload to S3
+        env:
+          AWS_REGION: 'us-east-1'
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        run: aws s3 sync ./ReactBasic-main/build s3://hackathon3-site-react/ --delete
