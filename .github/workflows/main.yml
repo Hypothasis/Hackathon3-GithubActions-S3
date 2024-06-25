@@ -27,4 +27,4 @@ jobs:
 
       - name: Build project
         run: CI=false npm run build
-        working-directory: ./ReactBasic-main/
+        working-directory: ./ReactBasic-main
